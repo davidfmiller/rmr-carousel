@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>rmr-carousel</title>
+<!--   <link rel="stylesheet" type="text/css" href="https://davidfmiller.github.io/man/man.css"> -->
+
+  <link rel="stylesheet" type="text/css" href="./build/rmr-carousel.css?bust=0">
+  <link rel="stylesheet" type="text/css" href="./build/index.css?bust=0">
+
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="mask-icon" href="favicon.svg" color="#d0021b">
+
+  <meta property="og:title" content="rmr-carousel">
+  <meta property="og:description" content="My last set carousel">
+  <meta property="og:email" content="davidfmiller@me.com">
+  <meta property="og:url" content="https://davidfmiller.github.io/rmr-carousel">
+  <meta property="fb:admins" content="eldaverino">
+  <meta property="og:image" content="./og-image.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+  <div id="man">
+    <h1><i>💬</i> <a href="https://github.com/davidfmiller/rmr-carousel">rmr-carousel</a></h1>
+    <p>The last carousel I’ll ever write.</p>
+    <h2>Todo</h2>
+    <dl>
+
+      <dt><code>hover</code></dt>
+      <dd>if <code>true</code>, dropdowns will appear when hovered over;</dd>
+      <dd>if <code>false</code>, dropdowns will appear when clicked</dd>
+
+      <dt><code>arrow</code></dt>
+      <dd>if <code>> 0</code>, dropdowns will have a little arrow element attaching them to the target with dimensions of the given size</dd>
+
+      <dt><code>center</code></dt>
+      <dd>if <code>true</code>, dropdowns be centered beneath their associated element</dd>
+
+      <dt><code>offset</code></dt>
+      <dd>how many pixels the dropdown should appear above/below their associated element</dd>
+
+      <dt><code>delay</code></dt>
+      <dd>how many milliseconds the dropdown should stick around after mousing out (only applicable when <code>hover</code> is <code>true</code>)</dd>
+
+    </dl>
+
+
+
+
+<section class="rmr-carousel">
+  <button class="rmr-prev" href="#prev" aria-label="Previous slide">
+    <span>Previous</span>
+  </button>
+  <button class="rmr-next" href="#next" aria-label="Next slide">
+    <span>Next</span>
+  </button>
+  <ul class="rmr-page-indicators">
+    <li><button>1</button></li>
+    <li><button>2</button></li>
+  </ul>
+
+  <div class="rmr-carousel-container" aria-role="group" aria-roledescription="carousel">
+    <div class="rmr-carousel-pages">
+      <div class="rmr-carousel-page" aria-role="group" aria-roledescription="slide">
+        page 1
+      </div>
+      <div class="rmr-carousel-page" aria-role="group" aria-roledescription="slide">
+        page 2
+      </div>
+    </div>
+  </div>
+</section>
+
+<button class="prev">Previous</button>
+<button class="next">Next</button>
+
+<footer>
+  <p>Hosted on <a href="https://github.com/davidfmiller/rmr-carousel">GitHub</a>.</p>
+</footer>
+
+  <script src="https://davidfmiller.github.io/man/man.js"></script>
+  <script src="./build/rmr-carousel.bundle.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    window.Man({ pre: true });
+
+    const c = new window.Carousel({
+      node: '.rmr-carousel',
+      duration: 0.3
+    });
+    console.log('carousel', c);
+
+    document.querySelector('button.prev').addEventListener('click', function(e) { console.log('prev', e); c.previous(); });
+    document.querySelector('button.next').addEventListener('click', function(e) { console.log('next', e); c.next(); });
+
+/*
+
+    const click = Drops({
+      node: '.click ul.rmr-drops',
+      hover: false,
+      delay: 1000,
+      offset: 1,
+      arrow: 8,
+      align: 'right',
+      style: 'pop'
+    });
+
+    click.drop('li.thumbs');
+*/
+  });
+  </script>
+
+
+</html>
