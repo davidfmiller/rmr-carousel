@@ -17,7 +17,7 @@
     this.carousel = RMR.Node.get(config.node);
     const self = this;
 
-    this.wrap = false;
+    this.circular = true;
 
     if (! this.carousel) {
       console.error('Invalid carousel configuration', config);
@@ -94,7 +94,7 @@
       }
     });
 
-    if (this.buttonPrevious) {
+    if (this.buttonPrevious && !this.circular) {
       if (index > 0) {
         this.buttonPrevious.removeAttribute('disabled');
       } else {
@@ -102,7 +102,7 @@
       }
     }
 
-    if (this.buttonNext) {
+    if (this.buttonNext && !this.circular) {
       if (index < this.slides.length - 1) {
         this.buttonNext.removeAttribute('disabled');
       } else {
@@ -115,7 +115,7 @@
 
   Carousel.prototype.next = function() {
 
-    if (this.wrap) {
+    if (this.circular) {
       const next = modulo(this.index + 1, this.slides.length);
       this.showSlide(next);
     }
@@ -125,7 +125,7 @@
   }
 
   Carousel.prototype.previous = function() {
-    if (this.wrap) {
+    if (this.circular) {
       const prev = modulo(this.index - 1, this.slides.length)
       this.showSlide(prev);
     } else if (this.index > 0) {
