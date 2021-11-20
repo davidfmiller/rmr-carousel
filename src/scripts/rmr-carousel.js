@@ -17,6 +17,8 @@
     this.carousel = RMR.Node.get(config.node);
     const self = this;
 
+    this.wrap = false;
+
     if (! this.carousel) {
       console.error('Invalid carousel configuration', config);
       return;
@@ -65,7 +67,7 @@
 
   Carousel.prototype.showSlide = function(index) {
 
-    if (index < 0 || index > this.slides.length) {
+    if (index < 0 || index >= this.slides.length) {
       console.error('Invalid slide index', index);
       return;
     }
@@ -83,26 +85,52 @@
       slide.setAttribute('aria-roledescription', 'slide');
     });
 
-    if (this.indicators.length) {
-      this.indicators.forEach((node, i) => {
-        if (i === index) {
-          node.classList.add('rmr-active');
-        } else {
-          node.classList.remove('rmr-active');
-        }
-      });
+
+    this.indicators.forEach((node, i) => {
+      if (i === index) {
+        node.classList.add('rmr-active');
+      } else {
+        node.classList.remove('rmr-active');
+      }
+    });
+
+    if (this.buttonPrevious) {
+      if (index > 0) {
+        this.buttonPrevious.removeAttribute('disabled');
+      } else {
+        this.buttonPrevious.setAttribute('disabled', true);
+      }
     }
+
+    if (this.buttonNext) {
+      if (index < this.slides.length - 1) {
+        this.buttonNext.removeAttribute('disabled');
+      } else {
+        this.buttonNext.setAttribute('disabled', true);
+      }
+    }
+
     this.index = index;
   }
 
   Carousel.prototype.next = function() {
-    const next = modulo(this.index + 1, this.slides.length);
-    this.showSlide(next);
+
+    if (this.wrap) {
+      const next = modulo(this.index + 1, this.slides.length);
+      this.showSlide(next);
+    }
+    else if (this.index < this.slides.length - 1) {
+      this.showSlide(this.index + 1);
+    }
   }
 
   Carousel.prototype.previous = function() {
-    const prev = modulo(this.index - 1, this.slides.length)
-    this.showSlide(prev);
+    if (this.wrap) {
+      const prev = modulo(this.index - 1, this.slides.length)
+      this.showSlide(prev);
+    } else if (this.index > 0) {
+      this.showSlide(this.index - 1);
+    }
   }
 
   module.exports = Carousel;
