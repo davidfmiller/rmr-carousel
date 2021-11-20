@@ -6,7 +6,6 @@ npm-debug.log
 
 # compiled files/libs
 *.pyc
-build
 *.css.map
 node_modules
 coverage

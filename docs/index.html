@@ -81,25 +81,9 @@
       node: '.rmr-carousel',
       duration: 0.3
     });
-    console.log('carousel', c);
 
-    document.querySelector('button.prev').addEventListener('click', function(e) { console.log('prev', e); c.previous(); });
-    document.querySelector('button.next').addEventListener('click', function(e) { console.log('next', e); c.next(); });
-
-/*
-
-    const click = Drops({
-      node: '.click ul.rmr-drops',
-      hover: false,
-      delay: 1000,
-      offset: 1,
-      arrow: 8,
-      align: 'right',
-      style: 'pop'
-    });
-
-    click.drop('li.thumbs');
-*/
+    document.querySelector('button.prev').addEventListener('click', function(e) { c.previous(); });
+    document.querySelector('button.next').addEventListener('click', function(e) { c.next(); });
   });
   </script>
 
