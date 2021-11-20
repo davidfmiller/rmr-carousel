@@ -29,7 +29,7 @@
     }
 
     if (config.duration) {
-      this.container.style.transitionDuration = '0.5s';
+      this.container.style.transitionDuration = config.duration + 's';
     }
 
     this.buttonPrevious = this.carousel.querySelector('.rmr-prev');
@@ -39,11 +39,11 @@
     this.indicators = Array.from(this.carousel.parentNode.querySelectorAll('.rmr-page-indicators li'));
 
     if (this.buttonPrevious) {
-      this.buttonPrevious.addEventListener('click', function(e) { console.log('prev'); self.previous(this); });
+      this.buttonPrevious.addEventListener('click', function(e) { self.previous(); });
     }
 
     if (this.buttonNext) {
-      this.buttonNext.addEventListener('click', function(e) { console.log('next'); self.next(); });
+      this.buttonNext.addEventListener('click', function(e) { self.next(); });
     }
 
     this.indicators = Array.from(this.carousel.querySelectorAll('.rmr-page-indicators li'));
