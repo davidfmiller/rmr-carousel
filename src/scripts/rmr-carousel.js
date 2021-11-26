@@ -15,11 +15,6 @@
   const Carousel = function(config) {
 
     this.carousel = RMR.Node.get(config.node);
-    const self = this;
-
-    this.circular = Object.keys(config).indexOf('circular') >= 0 ? config.circular : true;
-    this.on = Object.keys(config).indexOf('on') >= 0 ? config.on : () => { };
-
     if (! this.carousel) {
       console.error('Invalid carousel configuration', config);
       return;
@@ -30,6 +25,11 @@
       console.error('No carousel container', config);
       return;
     }
+
+    const self = this;
+
+    this.circular = Object.keys(config).indexOf('circular') >= 0 ? config.circular : true;
+    this.on = Object.keys(config).indexOf('on') >= 0 ? config.on : () => { };
 
     if (config.duration) {
       this.container.style.transitionDuration = config.duration + 's';
@@ -49,8 +49,6 @@
       this.buttonNext.addEventListener('click', function(e) { self.next(); });
     }
 
-    this.indicators = Array.from(this.carousel.querySelectorAll('.rmr-page-indicators li'));
-
     const pager = e => {
       self.showSlide(parseInt(e.target.closest('li').dataset.index, 10));
     }
@@ -67,6 +65,10 @@
   };
 
   Carousel.prototype.showSlide = function(index) {
+
+    if (index == this.index) {
+      return;
+    }
 
     if (index < 0 || index >= this.slides.length) {
       console.error('Invalid slide index', index);
