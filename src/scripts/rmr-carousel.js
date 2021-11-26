@@ -17,7 +17,8 @@
     this.carousel = RMR.Node.get(config.node);
     const self = this;
 
-    this.circular = true;
+    this.circular = Object.keys(config).indexOf('circular') >= 0 ? config.circular : true;
+    this.on = Object.keys(config).indexOf('on') >= 0 ? config.on : () => { };
 
     if (! this.carousel) {
       console.error('Invalid carousel configuration', config);
@@ -111,6 +112,7 @@
     }
 
     this.index = index;
+    this.on(index);
   }
 
   Carousel.prototype.next = function() {

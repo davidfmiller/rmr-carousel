@@ -41,6 +41,8 @@
       <dt><code>circular</code></dt>
       <dd><code>true</code> (default) or <code>false</code></dd>
 
+      <dt><code>on</code></dt>
+      <dd>function invoked when slide is displayed <code>(slide) => { /* slide is 0-based index */ }</code></dd>
     </dl>
 
 
@@ -54,6 +56,7 @@
   <ul class="rmr-page-indicators">
     <li><button>1</button></li>
     <li><button>2</button></li>
+    <li><button>3</button></li>
   </ul>
 
   <div class="rmr-carousel-container" aria-role="group" aria-roledescription="carousel">
@@ -63,6 +66,9 @@
       </div>
       <div class="rmr-carousel-page" aria-role="group" aria-roledescription="slide">
         page 2
+      </div>
+      <div class="rmr-carousel-page" aria-role="group" aria-roledescription="slide">
+        page 3
       </div>
     </div>
   </div>
@@ -83,7 +89,11 @@
 
     const c = new window.Carousel({
       node: '.rmr-carousel',
-      duration: 0.3
+      duration: 0.5,
+      circular: false,
+      on: slide => {
+        console.log(slide);
+      }
     });
 
     document.querySelector('button.prev').addEventListener('click', function(e) { c.previous(); });

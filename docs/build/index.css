@@ -1,1 +1,1 @@
-body.rmr-js img[data-rmr-src]{opacity:0;transition:opacity 0.5s}body.rmr-js img[data-rmr-src].rmr-loaded{opacity:1}body{background:green}.rmr-carousel{background:red;width:50%;padding-bottom:25px}
+body.rmr-js img[data-rmr-src]{opacity:0;transition:opacity 0.5s}body.rmr-js img[data-rmr-src].rmr-loaded{opacity:1}.rmr-carousel{background:green;width:50%;padding-bottom:50px}
