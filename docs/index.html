@@ -76,6 +76,11 @@
 
 <button class="prev">Previous</button>
 <button class="next">Next</button>
+<select>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+</select>
 
 <hr>
 
@@ -89,13 +94,19 @@
   document.addEventListener('DOMContentLoaded', () => {
     window.Man({ pre: true });
 
+    const select = document.querySelector('select');
+
     const c = new window.Carousel({
       node: '.rmr-carousel',
       duration: 0.5,
       circular: false,
       on: slide => {
-        console.log(slide);
+        select.selectedIndex = slide;
       }
+    });
+
+    select.addEventListener('change', function(e) {
+      c.showSlide(parseInt(e.target.value, 10) - 1);
     });
 
     document.querySelector('button.prev').addEventListener('click', function(e) { console.log(c.previous()); });
