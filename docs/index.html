@@ -77,6 +77,8 @@
 <button class="prev">Previous</button>
 <button class="next">Next</button>
 
+<hr>
+
 <footer>
   <p>Hosted on <a href="https://github.com/davidfmiller/rmr-carousel">GitHub</a>.</p>
 </footer>
@@ -96,8 +98,8 @@
       }
     });
 
-    document.querySelector('button.prev').addEventListener('click', function(e) { c.previous(); });
-    document.querySelector('button.next').addEventListener('click', function(e) { c.next(); });
+    document.querySelector('button.prev').addEventListener('click', function(e) { console.log(c.previous()); });
+    document.querySelector('button.next').addEventListener('click', function(e) { console.log(c.next()); });
   });
   </script>
 

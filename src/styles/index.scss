@@ -6,13 +6,37 @@
 */
 
 body {
-//  background: green;
+  font-family: $rmr-fonts;
+}
+
+#man {
+  margin: 0 auto;
+  width: 300px;
 }
 
 .rmr-carousel {
-  background: green;
-  width: 50%;
-  padding-bottom: 50px;
+  background: rgba(0,0,0,0.1);
+  width: 100%;
+  border-radius: 10px;
+  height: 200px;
+}
+
+.rmr-carousel-container {
+  height: 100%;
+}
+
+.rmr-next,
+.rmr-prev {
+  background: red;
+  border: none;
+  appearance: none;
+}
+
+.rmr-carousel-page {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 

@@ -80,11 +80,15 @@
     &.rmr-active {
       button {
         background: white;
+        cursor: default;
       }
     }
     &:last-child {
       margin-right: 0;
     }
+
+
+
     button {
       overflow: hidden;
       text-indent: -1000em;

@@ -64,15 +64,19 @@
     this.showSlide(0);
   };
 
+  /**
+   *
+   * @return bool
+   */
   Carousel.prototype.showSlide = function(index) {
 
     if (index == this.index) {
-      return;
+      return false;
     }
 
     if (index < 0 || index >= this.slides.length) {
       console.error('Invalid slide index', index);
-      return;
+      return false;
     }
 
     this.container.style.setProperty('--current-slide', index);
@@ -115,26 +119,37 @@
 
     this.index = index;
     this.on(index);
+    return true;
   }
 
+  /**
+   *
+   * @return bool
+   */
   Carousel.prototype.next = function() {
 
     if (this.circular) {
       const next = modulo(this.index + 1, this.slides.length);
-      this.showSlide(next);
+      return this.showSlide(next);
     }
     else if (this.index < this.slides.length - 1) {
-      this.showSlide(this.index + 1);
+      return this.showSlide(this.index + 1);
     }
+    return false;
   }
 
+  /**
+   *
+   * @return bool
+   */
   Carousel.prototype.previous = function() {
     if (this.circular) {
       const prev = modulo(this.index - 1, this.slides.length)
-      this.showSlide(prev);
+      return this.showSlide(prev);
     } else if (this.index > 0) {
-      this.showSlide(this.index - 1);
+      return this.showSlide(this.index - 1);
     }
+    return false;
   }
 
   module.exports = Carousel;
