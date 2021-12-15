@@ -74,13 +74,17 @@
   </div>
 </section>
 
-<button class="prev">Previous</button>
-<button class="next">Next</button>
-<select>
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-</select>
+<div class="commands">
+  <div>
+    <button class="prev">Previous</button>
+    <button class="next">Next</button>
+  </div>
+  <select>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+  </select>
+</div>
 
 <hr>
 
@@ -92,7 +96,7 @@
   <script src="./build/rmr-carousel.bundle.js"></script>
   <script>
   document.addEventListener('DOMContentLoaded', () => {
-    window.Man({ pre: true });
+//    window.Man({ pre: true });
 
     const select = document.querySelector('select');
 

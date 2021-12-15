@@ -26,6 +26,29 @@
       return;
     }
 
+//     this.dragging = [];
+//     this.container.addEventListener('mousedown', (e) => {
+//       console.log('down', e);
+//       self.dragging = [e.offsetX, e.offsetY];
+//     });
+//
+//     this.container.addEventListener('mousemove', (e) => {
+//       if (self.dragging.length) {
+//       this.container.style.transform = 'translateX(' + (e.offsetX - self.dragging[0]) + 'px)';
+//       this.container.style.transitionDuration = '0s';
+//       console.log(e.offsetX - self.dragging[0]);
+// //        this.container.style.
+//       }
+//     });
+//
+//     this.container.addEventListener('mouseup', (e) => {
+//       console.log('up', e);
+//       self.dragging = [];
+//       delete this.container.style.transform;
+//       delete this.container.style.transitionDuration;
+//     });
+
+
     const self = this;
 
     this.circular = Object.keys(config).indexOf('circular') >= 0 ? config.circular : true;
@@ -92,12 +115,14 @@
       slide.setAttribute('aria-roledescription', 'slide');
     });
 
-
     this.indicators.forEach((node, i) => {
+      const button = node.querySelector('button');
       if (i === index) {
         node.classList.add('rmr-active');
+        if (button) { button.setAttribute('disabled', true);  }
       } else {
         node.classList.remove('rmr-active');
+        if (button) { button.removeAttribute('disabled'); }
       }
     });
 
