@@ -27,9 +27,8 @@ const config = {
         use: [{
           loader: 'babel-loader',
           options: {
-            presets: [
-              ['es2015']
-            ]
+            babelrc: true,
+            presets: ['@babel/preset-env']
           }
         }]
       }
